@@ -27,4 +27,7 @@
     <data name="END_DATE_TRIP_MUST_BE_LATER_START_DATE" xml:space="preserve">
         <value>A viagem deve terminar após a data de ínicio.</value>
     </data>
+    <data name="TRIP_NOT_FOUND" xml:space="preserve">
+        <value>Viagem não encontrada.</value>
+    </data>
 </root>

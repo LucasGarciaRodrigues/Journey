@@ -12,19 +12,15 @@ public class RegisterTripUseCase
     public ResponseShortTripJson Execute(RequestRegisterTripJson request)
     {
         Validate(request);
-
         var dbContext = new JourneyDbContext();
-
         var entity = new Trip
         {
             Name = request.Name,
             StartDate = request.StartDate,
             EndDate = request.EndDate
         };
-        
         dbContext.Trips.Add(entity);
         dbContext.SaveChanges();
-
         return new ResponseShortTripJson
         {
             Id = entity.Id,
@@ -36,19 +32,12 @@ public class RegisterTripUseCase
 
     private static void Validate(RequestRegisterTripJson request)
     {
-        if (string.IsNullOrWhiteSpace(request.Name))
+        var validator = new RegisterTripValidator();
+        var result = validator.Validate(request);
+        if (!result.IsValid)
         {
-            throw new JourneyException(ResourceErrorMessages.NAME_EMPTY);
-        }
-        
-        if (request.StartDate < DateTime.UtcNow.Date)
-        {
-            throw new JourneyException(ResourceErrorMessages.DATE_TRIP_MUST_BE_LATER_THAN_TODAY);
-        }
-        
-        if (request.EndDate.Date <= request.StartDate.Date)
-        {
-            throw new JourneyException(ResourceErrorMessages.END_DATE_TRIP_MUST_BE_LATER_START_DATE);
+            var errorMessages = result.Errors.Select(error => error.ErrorMessage).ToList();
+            throw new ErrorOnValidationException(errorMessages);
         }
     }
 }
