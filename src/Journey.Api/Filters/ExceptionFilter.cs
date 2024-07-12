@@ -1,4 +1,5 @@
 using Journey.Communication.Responses;
+using Journey.Exception;
 using Journey.Exception.ExceptionsBase;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -21,7 +22,7 @@ public class ExceptionFilter : IExceptionFilter
             context.HttpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
             var list = new List<string>
             {
-                "Erro Desconhecido."
+                ResourceErrorMessages.UNKNOWN_ERROR
             };
             var responseJson = new ResponseErrorsJson(list);
             context.Result = new ObjectResult(responseJson);

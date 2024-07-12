@@ -1,6 +1,5 @@
 using Journey.Communication.Requests;
 using Journey.Communication.Responses;
-using Journey.Exception;
 using Journey.Exception.ExceptionsBase;
 using Journey.Infrastructure;
 using Journey.Infrastructure.Entities;
@@ -30,7 +29,7 @@ public class RegisterTripUseCase
         };
     }
 
-    private static void Validate(RequestRegisterTripJson request)
+    private void Validate(RequestRegisterTripJson request)
     {
         var validator = new RegisterTripValidator();
         var result = validator.Validate(request);

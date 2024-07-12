@@ -60,6 +60,24 @@ namespace Journey.Exception {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Atividade não encontrada..
+        /// </summary>
+        public static string ACTIVITY_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("ACTIVITY_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A data selecionada para a atividade não é válida..
+        /// </summary>
+        public static string DATE_NOT_WITHIN_TRAVEL_PERIOD {
+            get {
+                return ResourceManager.GetString("DATE_NOT_WITHIN_TRAVEL_PERIOD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A viagem não pode ser registrada para uma data passada..
         /// </summary>
         public static string DATE_TRIP_MUST_BE_LATER_THAN_TODAY {
@@ -92,6 +110,15 @@ namespace Journey.Exception {
         public static string TRIP_NOT_FOUND {
             get {
                 return ResourceManager.GetString("TRIP_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erro desconhecido..
+        /// </summary>
+        public static string UNKNOWN_ERROR {
+            get {
+                return ResourceManager.GetString("UNKNOWN_ERROR", resourceCulture);
             }
         }
     }
